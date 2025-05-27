@@ -22,7 +22,7 @@ The application is deployed and available at: [xlsx-csv.vercel.app](https://xlsx
 
 1. Clone the repository:
 ```bash
-git clone [REPOSITORY_URL]
+git clone https://github.com/rretta/xlsx-csv.git
 ```
 
 2. Install dependencies:
