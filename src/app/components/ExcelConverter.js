@@ -15,7 +15,7 @@ export default function ExcelConverter() {
     if (!file) return
 
     if (!file.name.endsWith('.xlsx')) {
-      setError('Por favor, sube un archivo .xlsx')
+      setError('Please upload an .xlsx file')
       return
     }
 
@@ -35,10 +35,10 @@ export default function ExcelConverter() {
         const csv = XLSX.utils.sheet_to_csv(worksheet)
         setCsvData(csv)
 
-        setSuccess('El archivo se ha convertido exitosamente')
+        setSuccess('File converted successfully')
         setError(null)
       } catch (error) {
-        setError('Error al procesar el archivo')
+        setError('Error processing the file')
         setSuccess(null)
       }
     }
@@ -72,7 +72,7 @@ export default function ExcelConverter() {
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="flex flex-col items-center space-y-8">
-        <h1 className="text-3xl font-bold">Convertidor de Excel a CSV</h1>
+        <h1 className="text-3xl font-bold">Excel to CSV Converter</h1>
         
         <div
           {...getRootProps()}
@@ -81,9 +81,9 @@ export default function ExcelConverter() {
         >
           <input {...getInputProps()} />
           {isDragActive ? (
-            <p className="text-gray-600">Suelta el archivo aquí...</p>
+            <p className="text-gray-600">Drop the file here...</p>
           ) : (
-            <p className="text-gray-600">Arrastra y suelta un archivo .xlsx aquí, o haz clic para seleccionar</p>
+            <p className="text-gray-600">Drag and drop an .xlsx file here, or click to select</p>
           )}
         </div>
 
@@ -101,7 +101,7 @@ export default function ExcelConverter() {
 
         {excelData && (
           <div className="w-full space-y-4">
-            <p className="font-bold">Vista previa de los datos:</p>
+            <p className="font-bold">Data Preview:</p>
             <div className="p-4 border border-gray-200 rounded-md w-full max-h-[300px] overflow-y-auto">
               <pre className="whitespace-pre-wrap">{JSON.stringify(excelData.slice(0, 5), null, 2)}</pre>
             </div>
@@ -112,7 +112,7 @@ export default function ExcelConverter() {
               className={`px-4 py-2 rounded-md text-white font-medium
                 ${csvData ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'}`}
             >
-              Descargar CSV
+              Download CSV
             </button>
           </div>
         )}
